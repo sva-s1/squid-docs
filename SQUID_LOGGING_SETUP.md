@@ -323,7 +323,9 @@ local5.* @10.0.0.241:10001;RFC5424Format
 
 **Important:** If you need to change the destination IP or port, just edit line 10!
 
-**Save and exit:** Press `CTRL+X`, then `Y`, then `ENTER`
+**Save and exit:**
+- In `vi`: Press `ESC`, type `:wq`, press `ENTER`
+- In `nano`: Press `CTRL+X`, then `Y`, then `ENTER`
 
 **Verify the file was created:**
 ```bash
@@ -435,7 +437,7 @@ Dec  2 20:35:09 squidproxy (squid-1)[13292]: 1764725709.484     88 ::1 TCP_MISS/
 **If you DON'T see any logs:**
 - Wait 30 seconds and try again (logs might be buffered)
 - Check if Squid is running: `systemctl status squid`
-- See TROUBLESHOOTING.md
+- See [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 
 ---
 
@@ -495,9 +497,9 @@ E...0.@.@...
 - Rest = The actual Squid log message
 
 **If you DON'T see packets:**
-- Make sure the destination IP (10.0.0.241) is reachable from your server
+- Make sure the destination IP (10.0.0.241 in this example - use your actual remote syslog server IP) is reachable from your server
 - Check if there's a firewall blocking UDP port 10001
-- See TROUBLESHOOTING.md
+- See [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 
 ---
 
@@ -573,9 +575,9 @@ systemctl status rsyslog
 
 - **Need to change the remote server IP/port?** Edit `/etc/rsyslog.d/30-squid-forward.conf` line 10, then `systemctl restart rsyslog`
 - **Want to send to multiple servers?** Add more lines like line 10 with different IPs
-- **Having problems?** See `TROUBLESHOOTING.md`
-- **Want to understand the architecture better?** See `WHY_THIS_WORKS.md`
-- **Need quick commands?** See `QUICK_REFERENCE.md`
+- **Having problems?** See [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+- **Want to understand the architecture better?** See [WHY_THIS_WORKS.md](WHY_THIS_WORKS.md)
+- **Need quick commands?** See [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
 
 ---
 
