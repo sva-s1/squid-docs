@@ -406,7 +406,7 @@ grep -c "access_log syslog" /etc/squid/squid.conf
 
 ---
 
-## License and Support
+## [License](LICENSE) and Support
 
 This documentation is provided as-is for educational and operational purposes.
 
