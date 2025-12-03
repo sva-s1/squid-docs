@@ -47,7 +47,7 @@ less /root/SQUID_LOGGING_SETUP.md
 **You'll learn:**
 - Why Squid can't send RFC 5424 format directly
 - Why we use rsyslog as an intermediary
-- Benefits of this architecture (performance, reliability, flexibility)
+- Benefits of this architecture (performance, reliability, flexibility, log management)
 - Detailed explanation of RFC 5424 format
 - How syslog facilities and priorities work
 

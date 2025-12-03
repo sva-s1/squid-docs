@@ -309,6 +309,44 @@ This is like having a backup generator - enterprise-grade reliability.
 
 ---
 
+### 6. Built-in Log Management
+
+**Automatic log rotation with logrotate:**
+
+rsyslog integrates seamlessly with the system's logrotate service (pre-installed on Rocky Linux).
+
+**What logrotate does automatically:**
+- Rotates `/var/log/messages` daily (or when it reaches size limit)
+- Compresses old logs (`.gz` files)
+- Keeps last 4 weeks of logs by default
+- Deletes very old logs automatically
+
+**Example of rotated logs:**
+```bash
+ls -lh /var/log/messages*
+```
+
+**Output:**
+```
+-rw-------. 1 root root  2.1M Dec  3 10:15 /var/log/messages
+-rw-------. 1 root root  8.2M Dec  2 03:22 /var/log/messages-20251202.gz
+-rw-------. 1 root root  7.9M Nov 25 03:15 /var/log/messages-20251125.gz
+-rw-------. 1 root root  8.1M Nov 18 03:28 /var/log/messages-20251118.gz
+```
+
+**Benefits:**
+- No manual log management needed
+- Disk space doesn't fill up
+- Old logs are compressed (saves 80-90% space)
+- Standard system tool - no custom scripts
+
+**If you were logging directly to files with Squid:**
+- You'd need to write custom rotation scripts
+- Risk of filling up disk if you forget
+- More complexity to maintain
+
+---
+
 ## Understanding RFC 5424 Format
 
 ### Anatomy of an RFC 5424 Log Message
@@ -555,7 +593,8 @@ $ActionQueueLowWatermark 60000
 3. ✅ **Fast:** Non-blocking, doesn't slow down Squid
 4. ✅ **Flexible:** Easy to change destinations, add filters, modify formats
 5. ✅ **Enterprise-Ready:** Can add disk queues for maximum reliability
-6. ✅ **Standard:** Uses operating system facilities, not custom solutions
-7. ✅ **Maintainable:** Standard rsyslog configuration, lots of documentation
+6. ✅ **Built-in Log Management:** Automatic rotation and compression via logrotate
+7. ✅ **Standard:** Uses operating system facilities, not custom solutions
+8. ✅ **Maintainable:** Standard rsyslog configuration, lots of documentation
 
 **This is why rsyslog is the recommended approach for production environments!**

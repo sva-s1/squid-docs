@@ -279,6 +279,11 @@ This shows you the last 50 log lines to see what went wrong.
 
 **Create the configuration file:**
 ```bash
+vi /etc/rsyslog.d/30-squid-forward.conf
+```
+
+**OR if you prefer nano (easier for beginners):**
+```bash
 nano /etc/rsyslog.d/30-squid-forward.conf
 ```
 
