@@ -147,7 +147,8 @@ rsyslog-8.2506.0-2.el9.x86_64
 
 ### Step 1: Back Up the Original Squid Configuration
 
-**Why:** Always keep a backup so you can restore if something goes wrong.
+> [!IMPORTANT]
+> Always keep a backup so you can restore if something goes wrong.
 
 ```bash
 cp /etc/squid/squid.conf /etc/squid/squid.conf.backup
@@ -321,7 +322,8 @@ local5.* @10.0.0.241:10001;RFC5424Format
    - `10.0.0.241:10001` = destination IP and port
    - `;RFC5424Format` = use the template we defined above
 
-**Important:** If you need to change the destination IP or port, just edit line 10!
+> [!TIP]
+> If you need to change the destination IP or port, just edit line 10!
 
 **Save and exit:**
 - In `vi`: Press `ESC`, type `:wq`, press `ENTER`
@@ -507,13 +509,15 @@ E...0.@.@...
 
 You've successfully configured everything if you see:
 
-✅ **Step 1:** Squid config has `access_log syslog:local5.info squid`
-✅ **Step 2:** rsyslog config exists at `/etc/rsyslog.d/30-squid-forward.conf`
-✅ **Step 3:** Squid is running (`systemctl status squid` shows active)
-✅ **Step 4:** rsyslog is running (`systemctl status rsyslog` shows active)
-✅ **Step 5:** Squid logs appear in `/var/log/messages`
-✅ **Step 6:** tcpdump shows UDP packets going to 10.0.0.241:10001
-✅ **Step 7:** Packets contain RFC 5424 formatted messages (version `1` after the priority)
+| # | Verification Step | Status |
+|---|-------------------|--------|
+| 1 | Squid config has `access_log syslog:local5.info squid` | ☐ |
+| 2 | rsyslog config exists at `/etc/rsyslog.d/30-squid-forward.conf` | ☐ |
+| 3 | Squid is running (`systemctl status squid` shows active) | ☐ |
+| 4 | rsyslog is running (`systemctl status rsyslog` shows active) | ☐ |
+| 5 | Squid logs appear in `/var/log/messages` | ☐ |
+| 6 | tcpdump shows UDP packets going to 10.0.0.241:10001 | ☐ |
+| 7 | Packets contain RFC 5424 formatted messages (version `1` after the priority) | ☐ |
 
 ---
 
