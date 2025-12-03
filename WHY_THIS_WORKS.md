@@ -231,18 +231,18 @@ Squid → rsyslog queue → Network down → Log STAYS in queue ✅
 **Blocking (like Squid TCP direct):**
 ```
 1. Squid: "Here's a log!"
-1. Squid: *waits for network to send*
-1. Squid: *waits for server to acknowledge*
-1. Server: "Got it!"
-1. Squid: "OK, now I can process the next request"
+2. Squid: *waits for network to send*
+3. Squid: *waits for server to acknowledge*
+4. Server: "Got it!"
+5. Squid: "OK, now I can process the next request"
 ```
 ⏱️ **Total time:** 50ms (wasted waiting on network)
 
 **Non-Blocking (with rsyslog):**
 ```
 1. Squid: "Here's a log!"
-1. rsyslog: "Got it, I'll handle it"
-1. Squid: "Cool, next request!"
+2. rsyslog: "Got it, I'll handle it"
+3. Squid: "Cool, next request!"
 ```
 ⏱️ **Total time:** 0.1ms (just a local function call)
 
