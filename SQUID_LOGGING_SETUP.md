@@ -35,6 +35,22 @@ Installed:
 Complete!
 ```
 
+### Install netcat (Network Testing Tool)
+**What it does:** Allows you to test network connections and send/receive data over TCP/UDP. Useful for testing if your remote syslog server is reachable.
+
+```bash
+dnf install -y nmap-ncat
+```
+
+**Expected output:**
+```
+Installed:
+  nmap-ncat-7.92-1.el9.x86_64
+Complete!
+```
+
+**Note:** On Rocky Linux 9, netcat is provided by the `nmap-ncat` package. The command is `nc`.
+
 ### Verify Squid is Installed
 **What it does:** Confirms Squid proxy server is installed on your system.
 
