@@ -353,12 +353,12 @@ ls -lh /var/log/messages*
 
 ```
 <174>1 2025-12-02T20:38:05.173191-05:00 squidproxy (squid-1) 13292 - - 1764725709.484 88 ::1 TCP_MISS/200...
-└┬─┘│ └──────────┬──────────────────┘ └───┬────┘ └──┬───┘ └─┬──┘ ││ └─────────┬──────────────────────┘
- │  │            │                        │          │       │    ││           │
- │  │            │                        │          │       │    ││           └─ Actual log message
- │  │            │                        │          │       │    │└─ Structured data (empty here)
- │  │            │                        │          │       │    └─ Message ID (empty here)
- │  │            │                        │          │       └─ Process ID
+└┬─┘│ └──────────┬──────────────────┘ └───┬────┘ └──┬───┘ └─┬──┘   │ │ └─────────┬──────────────────────┘
+ │  │            │                        │          │      │      │ │           │
+ │  │            │                        │          │      │      │ │           └─ Actual log message
+ │  │            │                        │          │      │      │ └─ Structured data (empty here)
+ │  │            │                        │          │      │      └─ Message ID (empty here)
+ │  │            │                        │          │      └─ Process ID
  │  │            │                        │          └─ Application name
  │  │            │                        └─ Hostname
  │  │            └─ Timestamp (RFC 3339 format with timezone)
