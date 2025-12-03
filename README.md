@@ -417,10 +417,10 @@ This documentation is provided as-is for educational and operational purposes.
 ## Summary
 
 **What we've accomplished:**
-✅ Squid sends logs to local syslog using syslog module
-✅ rsyslog converts logs to RFC 5424 format
-✅ rsyslog forwards logs to remote server via UDP on port 10001
-✅ Reliable, performant, and flexible logging architecture
+1. ✅ Squid sends logs to local syslog using syslog module
+1. ✅ rsyslog converts logs to RFC 5424 format
+1. ✅ rsyslog forwards logs to remote server via UDP on port 10001
+1. ✅ Reliable, performant, and flexible logging architecture
 
 **Total config changes:** 2 files
 **Total downtime:** < 30 seconds (service restarts)
