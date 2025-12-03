@@ -10,7 +10,7 @@
 
 **Complete guide for shipping Squid proxy logs to remote syslog server in RFC 5424 format**
 
-![KRAGLE](src/images/kragle.png)
+![KRAGLE](src/images/kragle.jpg)
 
 ---
 
