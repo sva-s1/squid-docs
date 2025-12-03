@@ -230,15 +230,15 @@ Common tasks: Checking logs, restarting services, monitoring, etc.
 
 **For beginners:**
 1. 📘 SQUID_LOGGING_SETUP.md (follow step-by-step)
-2. ⚡ QUICK_REFERENCE.md (bookmark for daily use)
-3. 🧠 WHY_THIS_WORKS.md (when you want to understand deeper)
-4. 🔧 TROUBLESHOOTING.md (when needed)
+1. ⚡ QUICK_REFERENCE.md (bookmark for daily use)
+1. 🧠 WHY_THIS_WORKS.md (when you want to understand deeper)
+1. 🔧 TROUBLESHOOTING.md (when needed)
 
 **For experienced admins:**
 1. 🧠 WHY_THIS_WORKS.md (understand architecture first)
-2. 📘 SQUID_LOGGING_SETUP.md (skim for specifics)
-3. ⚡ QUICK_REFERENCE.md (bookmark for daily use)
-4. 🔧 TROUBLESHOOTING.md (reference as needed)
+1. 📘 SQUID_LOGGING_SETUP.md (skim for specifics)
+1. ⚡ QUICK_REFERENCE.md (bookmark for daily use)
+1. 🔧 TROUBLESHOOTING.md (reference as needed)
 
 ---
 
@@ -320,9 +320,9 @@ A: Edit `/etc/rsyslog.d/30-squid-forward.conf`, change the IP/port, restart rsys
 ## Getting Help
 
 1. ✅ Check TROUBLESHOOTING.md for your specific problem
-2. ✅ Run the diagnostic report generator (in TROUBLESHOOTING.md)
-3. ✅ Review WHY_THIS_WORKS.md to understand the architecture
-4. ✅ Check official docs:
+1. ✅ Run the diagnostic report generator (in TROUBLESHOOTING.md)
+1. ✅ Review WHY_THIS_WORKS.md to understand the architecture
+1. ✅ Check official docs:
    - Squid: https://wiki.squid-cache.org
    - rsyslog: https://www.rsyslog.com/doc/
 
