@@ -10,7 +10,7 @@
 
 **Complete guide for shipping Squid proxy logs to remote syslog server in RFC 5424 format**
 
-![KRAGLE](src/images/kragle.jpg)
+![KRAGLE](src/images/thekragle.jpg)
 
 ---
 
@@ -42,10 +42,6 @@ This guide is split into multiple focused documents. Start with the one that mat
 - How to test your configuration
 - How to verify logs are being sent
 
-```bash
-less /root/SQUID_LOGGING_SETUP.md
-```
-
 ---
 
 ### 2. 🧠 [WHY_THIS_WORKS.md](WHY_THIS_WORKS.md)
@@ -60,10 +56,6 @@ less /root/SQUID_LOGGING_SETUP.md
 - Benefits of this architecture (performance, reliability, flexibility, log management)
 - Detailed explanation of RFC 5424 format
 - How syslog facilities and priorities work
-
-```bash
-less /root/WHY_THIS_WORKS.md
-```
 
 ---
 
@@ -81,10 +73,6 @@ less /root/WHY_THIS_WORKS.md
 - Network troubleshooting techniques
 - Performance issue fixes
 
-```bash
-less /root/TROUBLESHOOTING.md
-```
-
 ---
 
 ### 4. ⚡ [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
@@ -100,10 +88,6 @@ less /root/TROUBLESHOOTING.md
 - Common configuration changes
 - One-liner commands
 - File locations reference
-
-```bash
-less /root/QUICK_REFERENCE.md
-```
 
 ---
 
@@ -447,12 +431,8 @@ This documentation is provided as-is for educational and operational purposes.
 
 **Ready to get started?**
 
-```bash
-# Open the setup guide
-less /root/SQUID_LOGGING_SETUP.md
+👉 Start with [SQUID_LOGGING_SETUP.md](SQUID_LOGGING_SETUP.md) for step-by-step instructions
 
-# Or jump straight to Quick Reference
-less /root/QUICK_REFERENCE.md
-```
+👉 Or jump to [QUICK_REFERENCE.md](QUICK_REFERENCE.md) for quick commands
 
 Good luck! 🚀

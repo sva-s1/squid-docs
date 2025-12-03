@@ -681,9 +681,4 @@ Systemd Units:
 
 **Pro Tip:** Keep this file open in another terminal for quick command lookups!
 
-```bash
-# Open in less for easy searching
-less /root/QUICK_REFERENCE.md
 
-# Press / to search, n for next match, q to quit
-```
