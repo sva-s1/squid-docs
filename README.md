@@ -19,7 +19,7 @@ This documentation set explains how to configure Squid proxy server (version 5.5
 
 This guide is split into multiple focused documents. Start with the one that matches your needs:
 
-### 1. 📘 SQUID_LOGGING_SETUP.md
+### 1. 📘 [SQUID_LOGGING_SETUP.md](SQUID_LOGGING_SETUP.md)
 **START HERE** - Step-by-step setup instructions
 
 **For:** Setting up the configuration from scratch
@@ -38,7 +38,7 @@ less /root/SQUID_LOGGING_SETUP.md
 
 ---
 
-### 2. 🧠 WHY_THIS_WORKS.md
+### 2. 🧠 [WHY_THIS_WORKS.md](WHY_THIS_WORKS.md)
 **Understanding the architecture**
 
 **For:** People who want to understand the "why" behind the setup
@@ -57,7 +57,7 @@ less /root/WHY_THIS_WORKS.md
 
 ---
 
-### 3. 🔧 TROUBLESHOOTING.md
+### 3. 🔧 [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 **Problem solving guide**
 
 **For:** When something isn't working correctly
@@ -77,7 +77,7 @@ less /root/TROUBLESHOOTING.md
 
 ---
 
-### 4. ⚡ QUICK_REFERENCE.md
+### 4. ⚡ [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
 **Command cheat sheet**
 
 **For:** Quick lookup of common commands
@@ -145,13 +145,13 @@ timeout 10 tcpdump -i any -nn -A 'udp and dst port 10001' -c 1
 │  │  Port 3128 │  Generates access logs                          │
 │  └─────┬──────┘                                                 │
 │        │ syslog:local5.info                                     │
-│        ▼                                                         │
+│        ▼                                                        │
 │  ┌────────────┐                                                 │
 │  │  rsyslog   │  Receives logs from Squid                       │
 │  │   daemon   │  Converts to RFC 5424 format                    │
 │  └─────┬──────┘  Buffers and forwards                           │
-│        │                                                         │
-└────────┼─────────────────────────────────────────────────────────┘
+│        │                                                        │
+└────────┼────────────────────────────────────────────────────────┘
          │ UDP Port 10001
          │ RFC 5424 Format
          ▼
