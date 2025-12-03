@@ -27,7 +27,7 @@ Send Squid proxy access logs to a remote syslog server using:
 
 ### What Seems Like It Should Work (But Doesn't)
 ```
-access_log udp://10.0.0.241:10001 squid
+access_log udp://YOUR_SYSLOG_IP:10001 squid
 ```
 
 **Why it doesn't work:**
@@ -124,7 +124,7 @@ access_log tcp://172.24.3.230:9537 squid
 ┌───────────────────────┐
 │   Remote Syslog       │
 │   Server              │
-│   10.0.0.241:10001    │
+│   (S1 Collector)      │
 │                       │
 │   Receives RFC 5424   │
 │   formatted logs      │
@@ -149,7 +149,7 @@ access_log tcp://172.24.3.230:9537 squid
 **Step 4: rsyslog Receives and Processes**
 - rsyslog daemon receives the log entry
 - Checks its configuration files in `/etc/rsyslog.d/`
-- Finds our rule: `local5.* @10.0.0.241:10001;RFC5424Format`
+- Finds our rule: `local5.* @YOUR_SYSLOG_IP:10001;RFC5424Format`
 - Applies the RFC5424Format template
 - Adds structured fields (timestamp, hostname, PID, etc.)
 
@@ -159,7 +159,7 @@ access_log tcp://172.24.3.230:9537 squid
 - If remote server is slow/down, logs stay in queue
 
 **Step 6: Network Transmission**
-- rsyslog sends UDP packet to 10.0.0.241:10001
+- rsyslog sends UDP packet to your remote syslog server
 - UDP = fire-and-forget (no waiting for acknowledgment)
 - Packet contains RFC 5424 formatted message
 
@@ -269,16 +269,16 @@ systemctl restart rsyslog
 **Send to multiple destinations:**
 ```bash
 # Add to /etc/rsyslog.d/30-squid-forward.conf
-local5.* @10.0.0.241:10001;RFC5424Format
-local5.* @10.0.0.242:10001;RFC5424Format
-local5.* @10.0.0.243:10001;RFC5424Format
+local5.* @SYSLOG_SERVER_1:10001;RFC5424Format
+local5.* @SYSLOG_SERVER_2:10001;RFC5424Format
+local5.* @SYSLOG_SERVER_3:10001;RFC5424Format
 ```
 Now same logs go to 3 servers - no changes to Squid needed!
 
 **Filter certain logs:**
 ```bash
 # Only send successful requests (HTTP 200-299)
-:msg, contains, "TCP_MISS/2" @10.0.0.241:10001;RFC5424Format
+:msg, contains, "TCP_MISS/2" @YOUR_SYSLOG_IP:10001;RFC5424Format
 ```
 
 ---
@@ -295,7 +295,7 @@ $ActionQueueMaxDiskSpace 1g      # Use up to 1GB disk space
 $ActionQueueSaveOnShutdown on    # Save queue when rsyslog stops
 $ActionResumeRetryCount -1       # Retry forever
 
-local5.* @10.0.0.241:10001;RFC5424Format
+local5.* @YOUR_SYSLOG_IP:10001;RFC5424Format
 ```
 
 **Now even if:**

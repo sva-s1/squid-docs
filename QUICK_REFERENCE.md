@@ -177,14 +177,14 @@ curl -x http://localhost:3128 https://www.google.com/ -I
 ### Test Network Connectivity
 
 ```bash
-# Ping remote syslog server
-ping -c 5 10.0.0.241
+# Ping remote syslog server (replace with your IP)
+ping -c 5 YOUR_SYSLOG_IP
 
 # Test UDP port reachability
-nc -zvu 10.0.0.241 10001
+nc -zvu YOUR_SYSLOG_IP 10001
 
 # Trace route to remote server
-traceroute 10.0.0.241
+traceroute YOUR_SYSLOG_IP
 
 # Check if packets are being sent (run for 15 seconds)
 timeout 15 tcpdump -i any -nn 'udp and dst port 10001' -c 5
@@ -317,10 +317,10 @@ grep squid /var/log/messages | grep -oE "TCP_[A-Z]+/[0-9]{3}" | cut -d'/' -f2 | 
 nano /etc/rsyslog.d/30-squid-forward.conf
 
 # Find this line:
-# local5.* @10.0.0.241:10001;RFC5424Format
+# local5.* @OLD_IP:OLD_PORT;RFC5424Format
 
 # Change to new IP/port:
-# local5.* @10.0.0.NEW_IP:NEW_PORT;RFC5424Format
+# local5.* @NEW_IP:NEW_PORT;RFC5424Format
 
 # Save and restart rsyslog
 systemctl restart rsyslog
@@ -335,8 +335,8 @@ systemctl restart rsyslog
 nano /etc/rsyslog.d/30-squid-forward.conf
 
 # Add additional line:
-local5.* @10.0.0.241:10001;RFC5424Format
-local5.* @10.0.0.242:10001;RFC5424Format
+local5.* @SYSLOG_SERVER_1:10001;RFC5424Format
+local5.* @SYSLOG_SERVER_2:10001;RFC5424Format
 
 # Save and restart rsyslog
 systemctl restart rsyslog
@@ -351,7 +351,7 @@ systemctl restart rsyslog
 nano /etc/rsyslog.d/30-squid-forward.conf
 
 # Change @ to @@ (double @ = TCP):
-# local5.* @@10.0.0.241:10001;RFC5424Format
+# local5.* @@YOUR_SYSLOG_IP:10001;RFC5424Format
 
 # Save and restart rsyslog
 systemctl restart rsyslog
@@ -410,7 +410,7 @@ $ActionQueueSaveOnShutdown on
 $ActionResumeRetryCount -1
 
 # Keep existing forwarding rule:
-local5.* @10.0.0.241:10001;RFC5424Format
+local5.* @YOUR_SYSLOG_IP:10001;RFC5424Format
 
 # Create queue directory
 mkdir -p /var/spool/rsyslog
@@ -434,7 +434,7 @@ echo "=== rsyslog Status ===" && systemctl status rsyslog --no-pager | head -5
 echo ""
 echo "=== Recent Squid Logs ===" && grep squid /var/log/messages | tail -3
 echo ""
-echo "=== Network Test ===" && ping -c 2 10.0.0.241
+echo "=== Network Test ===" && ping -c 2 YOUR_SYSLOG_IP
 ```
 
 ---
@@ -617,7 +617,7 @@ tail -f /var/log/messages | grep squid
 
 ```bash
 # Test network
-ping -c 3 10.0.0.241
+ping -c 3 YOUR_SYSLOG_IP
 
 # Check config
 cat /etc/rsyslog.d/30-squid-forward.conf

@@ -310,16 +310,16 @@ A: Yes, the syslog module is standard across all Squid versions.
 A: Yes! Add multiple lines to `/etc/rsyslog.d/30-squid-forward.conf`. See QUICK_REFERENCE.md "Common Modifications" section.
 
 **Q: What if the remote server is down?**
-A: Logs are buffered in rsyslog's queue. Add disk-based queue for maximum reliability. See WHY_THIS_WORKS.md "Reliability" section.
+A: Logs are buffered in rsyslog's queue. Add disk-based queue for maximum reliability. See [WHY_THIS_WORKS.md](WHY_THIS_WORKS.md) "Reliability" section.
 
 **Q: Does this impact Squid performance?**
-A: Minimal impact (<0.1% CPU). The syslog() call is extremely fast. See WHY_THIS_WORKS.md "Performance Impact" section.
+A: Minimal impact (<0.1% CPU). The syslog() call is extremely fast. See [WHY_THIS_WORKS.md](WHY_THIS_WORKS.md) "Performance Impact" section.
 
 **Q: Can I use TCP instead of UDP?**
-A: Yes, change `@` to `@@` in the rsyslog config. See QUICK_REFERENCE.md "Change to TCP" section.
+A: Yes, change `@` to `@@` in the rsyslog config. See [QUICK_REFERENCE.md](QUICK_REFERENCE.md) "Change to TCP" section.
 
 **Q: How do I change the destination IP/port?**
-A: Edit `/etc/rsyslog.d/30-squid-forward.conf`, change the IP/port, restart rsyslog. See QUICK_REFERENCE.md "Common Modifications" section.
+A: Edit `/etc/rsyslog.d/30-squid-forward.conf`, change the IP/port, restart rsyslog. See [QUICK_REFERENCE.md](QUICK_REFERENCE.md) "Common Modifications" section.
 
 ---
 
@@ -356,7 +356,7 @@ The local `/var/log/messages` file is automatically rotated by `logrotate`. Squi
 ### Security Considerations
 - UDP is unencrypted - logs are sent in plain text over the network
 - If you need encryption, use TLS-enabled syslog (not covered in this guide)
-- Firewall should allow outbound UDP to 10.0.0.241:10001
+- Firewall should allow outbound UDP to your remote syslog server IP and port
 
 ---
 

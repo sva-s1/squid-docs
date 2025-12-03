@@ -38,11 +38,11 @@ rsyslogd -N1
 # 5. Are Squid logs reaching local syslog?
 grep -i squid /var/log/messages | tail -5
 
-# 6. Is network reachable?
-ping -c 3 10.0.0.241
+# 6. Is network reachable? (replace with your syslog server IP)
+ping -c 3 YOUR_SYSLOG_IP
 
 # 7. Is UDP port 10001 reachable?
-nc -zvu 10.0.0.241 10001
+nc -zvu YOUR_SYSLOG_IP 10001
 
 # 8. Are packets being sent?
 timeout 5 tcpdump -i any -nn 'udp and dst port 10001' -c 1
@@ -406,7 +406,7 @@ tail -f /var/log/messages
 
 **Step 1: Can you ping the remote server?**
 ```bash
-ping -c 5 10.0.0.241
+ping -c 5 YOUR_SYSLOG_IP
 ```
 
 **Expected output:**
@@ -425,12 +425,12 @@ ping -c 5 10.0.0.241
 
 **Step 2: Can you reach UDP port 10001?**
 ```bash
-nc -zvu 10.0.0.241 10001
+nc -zvu YOUR_SYSLOG_IP 10001
 ```
 
 **Expected output:**
 ```
-Connection to 10.0.0.241 10001 port [udp/*] succeeded!
+Connection to YOUR_SYSLOG_IP 10001 port [udp/*] succeeded!
 ```
 
 **If you see `failed`:**
@@ -453,7 +453,7 @@ firewall-cmd --list-all
 
 **Allow outbound UDP (usually allowed by default):**
 ```bash
-firewall-cmd --permanent --add-rich-rule='rule family="ipv4" destination address="10.0.0.241/32" port port="10001" protocol="udp" accept'
+firewall-cmd --permanent --add-rich-rule='rule family="ipv4" destination address="YOUR_SYSLOG_IP/32" port port="10001" protocol="udp" accept'
 firewall-cmd --reload
 ```
 
@@ -463,12 +463,12 @@ firewall-cmd --reload
 
 **Check forwarding rule exists:**
 ```bash
-grep "@10.0.0.241" /etc/rsyslog.d/30-squid-forward.conf
+grep "@" /etc/rsyslog.d/30-squid-forward.conf
 ```
 
 **Should see:**
 ```
-local5.* @10.0.0.241:10001;RFC5424Format
+local5.* @YOUR_SYSLOG_IP:10001;RFC5424Format
 ```
 
 **Common mistakes:**
@@ -476,16 +476,16 @@ local5.* @10.0.0.241:10001;RFC5424Format
 **Missing @ symbol:**
 ```bash
 # WRONG:
-local5.* 10.0.0.241:10001;RFC5424Format
+local5.* YOUR_SYSLOG_IP:10001;RFC5424Format
 
 # RIGHT (note the @ before IP):
-local5.* @10.0.0.241:10001;RFC5424Format
+local5.* @YOUR_SYSLOG_IP:10001;RFC5424Format
 ```
 
 **Single @ = UDP, Double @@ = TCP:**
 ```bash
-@10.0.0.241:10001   # UDP (correct for your setup)
-@@10.0.0.241:10001  # TCP (wrong)
+@YOUR_SYSLOG_IP:10001   # UDP (correct for your setup)
+@@YOUR_SYSLOG_IP:10001  # TCP (wrong)
 ```
 
 ---
@@ -494,8 +494,8 @@ local5.* @10.0.0.241:10001;RFC5424Format
 
 **Verify packets are being sent:**
 ```bash
-# Start packet capture
-timeout 15 tcpdump -i any -nn -c 5 'udp and dst host 10.0.0.241 and dst port 10001'
+# Start packet capture (replace with your syslog server IP)
+timeout 15 tcpdump -i any -nn -c 5 'udp and dst host YOUR_SYSLOG_IP and dst port 10001'
 ```
 
 **In another terminal, generate traffic:**
@@ -893,7 +893,7 @@ cat >> /root/squid-diagnostic.txt <<'EOF'
 
 ====== NETWORK CONNECTIVITY ======
 EOF
-ping -c 3 10.0.0.241 >> /root/squid-diagnostic.txt 2>&1
+echo "Replace YOUR_SYSLOG_IP with actual IP" >> /root/squid-diagnostic.txt 2>&1
 
 echo "Diagnostic report created: /root/squid-diagnostic.txt"
 ```
