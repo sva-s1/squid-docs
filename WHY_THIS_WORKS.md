@@ -99,8 +99,8 @@ access_log tcp://172.24.3.230:9537 squid
 │       │                                                         │
 │       ▼                                                         │
 │  ┌──────────────────┐                                           │
-│  │  Squid Proxy     │  1. Proxy request                        │
-│  │  Port 3128       │  2. Generate log entry                   │
+│  │  Squid Proxy     │  1. Proxy request                         │
+│  │  Port 3128       │  2. Generate log entry                    │
 │  └────┬─────────────┘                                           │
 │       │                                                         │
 │       │ syslog() API call                                       │
@@ -108,9 +108,9 @@ access_log tcp://172.24.3.230:9537 squid
 │       │                                                         │
 │       ▼                                                         │
 │  ┌──────────────────┐                                           │
-│  │   rsyslog        │  3. Receive log via syslog()             │
-│  │   daemon         │  4. Format as RFC 5424                   │
-│  │                  │  5. Buffer in memory queue               │
+│  │   rsyslog        │  3. Receive log via syslog()              │
+│  │   daemon         │  4. Format as RFC 5424                    │
+│  │                  │  5. Buffer in memory queue                │
 │  └────┬─────────────┘                                           │
 │       │                                                         │
 │       │ UDP packet                                              │
