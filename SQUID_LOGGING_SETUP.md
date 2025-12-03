@@ -1,6 +1,6 @@
 # Squid Proxy: Complete Guide to Shipping Logs to Remote Syslog Server
 
-**Goal:** Send Squid proxy logs to a remote syslog server (10.0.0.241:10001) using UDP in RFC 5424 format
+**Goal:** Send Squid proxy logs to a remote syslog server (example: 10.0.0.241:10001) using UDP in RFC 5424 format
 
 **Difficulty Level:** Beginner-friendly
 **Time Required:** 15-20 minutes
@@ -447,7 +447,7 @@ Dec  2 20:35:09 squidproxy (squid-1)[13292]: 1764725709.484     88 ::1 TCP_MISS/
 
 ### Test 3: Capture Network Traffic to Remote Server
 
-**What we're doing:** Using tcpdump to literally watch the UDP packets being sent to 10.0.0.241:10001.
+**What we're doing:** Using tcpdump to literally watch the UDP packets being sent to your remote syslog server (replace 10.0.0.241:10001 with your actual IP and port).
 
 **Start the packet capture:**
 ```bash
@@ -516,7 +516,7 @@ You've successfully configured everything if you see:
 | 3 | Squid is running (`systemctl status squid` shows active) | ☐ |
 | 4 | rsyslog is running (`systemctl status rsyslog` shows active) | ☐ |
 | 5 | Squid logs appear in `/var/log/messages` | ☐ |
-| 6 | tcpdump shows UDP packets going to 10.0.0.241:10001 | ☐ |
+| 6 | tcpdump shows UDP packets going to your remote syslog server | ☐ |
 | 7 | Packets contain RFC 5424 formatted messages (version `1` after the priority) | ☐ |
 
 ---

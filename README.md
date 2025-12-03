@@ -11,7 +11,7 @@ This documentation set explains how to configure Squid proxy server (version 5.5
 - **Port:** 10001 (customizable)
 - **Format:** RFC 5424 (industry standard syslog format)
 
-**The solution:** Use rsyslog as an intermediary to convert Squid's native log format to RFC 5424 and forward to remote destination.
+**The solution:** Use rsyslog as an intermediary to convert Squid's native log format to RFC 5424 and forward to your remote destination.
 
 ---
 
@@ -117,7 +117,7 @@ cat > /etc/rsyslog.d/30-squid-forward.conf <<'EOF'
 template(name="RFC5424Format" type="string"
   string="<%PRI%>1 %TIMESTAMP:::date-rfc3339% %HOSTNAME% %APP-NAME% %PROCID% %MSGID% %STRUCTURED-DATA% %msg%\n"
 )
-local5.* @10.0.0.241:10001;RFC5424Format
+local5.* @YOUR_SYSLOG_IP:10001;RFC5424Format
 EOF
 
 # 3. Restart services
@@ -157,7 +157,7 @@ timeout 10 tcpdump -i any -nn -A 'udp and dst port 10001' -c 1
          ▼
    ┌──────────────────┐
    │  Remote Syslog   │
-   │  10.0.0.241      │
+   │  (S1 Collector)  │
    │  Port 10001      │
    └──────────────────┘
 ```
