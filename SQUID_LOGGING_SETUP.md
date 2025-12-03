@@ -136,6 +136,11 @@ rsyslog-8.2506.0-2.el9.x86_64
 - Can configure rsyslog to use disk-based queues
 - Even if server is down for hours, logs won't be lost
 
+**6. Built-in Log Management**
+- rsyslog integrates seamlessly with logrotate for automatic log rotation
+- No need to manually manage log file sizes or implement custom rotation scripts
+- Local logs in `/var/log/messages` are automatically rotated and compressed
+
 ---
 
 ## Step-by-Step Configuration
