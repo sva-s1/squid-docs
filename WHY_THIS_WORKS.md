@@ -7,13 +7,13 @@
 
 ## Table of Contents
 1. [The Problem We're Solving](#the-problem-were-solving)
-2. [Why Not Use Squid's Native UDP/TCP Logging?](#why-not-use-squids-native-udptcp-logging)
-3. [The Architecture](#the-architecture)
-4. [Benefits of Using rsyslog as Intermediary](#benefits-of-using-rsyslog-as-intermediary)
-5. [Understanding RFC 5424 Format](#understanding-rfc-5424-format)
-6. [Understanding Syslog Facilities and Priorities](#understanding-syslog-facilities-and-priorities)
-7. [Performance Impact](#performance-impact)
-8. [Reliability and Data Loss Prevention](#reliability-and-data-loss-prevention)
+1. [Why Not Use Squid's Native UDP/TCP Logging?](#why-not-use-squids-native-udptcp-logging)
+1. [The Architecture](#the-architecture)
+1. [Benefits of Using rsyslog as Intermediary](#benefits-of-using-rsyslog-as-intermediary)
+1. [Understanding RFC 5424 Format](#understanding-rfc-5424-format)
+1. [Understanding Syslog Facilities and Priorities](#understanding-syslog-facilities-and-priorities)
+1. [Performance Impact](#performance-impact)
+1. [Reliability and Data Loss Prevention](#reliability-and-data-loss-prevention)
 
 ---
 
@@ -32,8 +32,8 @@ access_log udp://YOUR_SYSLOG_IP:10001 squid
 
 **Why it doesn't work:**
 1. Squid's UDP module sends logs in **Squid's native format**, not RFC 5424
-2. The remote syslog server expects RFC 5424 format
-3. Format mismatch = logs might be rejected, malformed, or unparseable
+1. The remote syslog server expects RFC 5424 format
+1. Format mismatch = logs might be rejected, malformed, or unparseable
 
 **Real example of what Squid UDP sends:**
 ```
@@ -78,9 +78,9 @@ access_log tcp://172.24.3.230:9537 squid
 
 **Problems with this approach:**
 1. **Format:** Still Squid's native format, not RFC 5424
-2. **Blocking:** Squid has to wait for TCP acknowledgment, slows down request processing
-3. **No buffering:** If connection breaks, logs are lost immediately
-4. **No format control:** Can't modify or enrich logs before sending
+1. **Blocking:** Squid has to wait for TCP acknowledgment, slows down request processing
+1. **No buffering:** If connection breaks, logs are lost immediately
+1. **No format control:** Can't modify or enrich logs before sending
 
 ---
 
@@ -231,18 +231,18 @@ Squid → rsyslog queue → Network down → Log STAYS in queue ✅
 **Blocking (like Squid TCP direct):**
 ```
 1. Squid: "Here's a log!"
-2. Squid: *waits for network to send*
-3. Squid: *waits for server to acknowledge*
-4. Server: "Got it!"
-5. Squid: "OK, now I can process the next request"
+1. Squid: *waits for network to send*
+1. Squid: *waits for server to acknowledge*
+1. Server: "Got it!"
+1. Squid: "OK, now I can process the next request"
 ```
 ⏱️ **Total time:** 50ms (wasted waiting on network)
 
 **Non-Blocking (with rsyslog):**
 ```
 1. Squid: "Here's a log!"
-2. rsyslog: "Got it, I'll handle it"
-3. Squid: "Cool, next request!"
+1. rsyslog: "Got it, I'll handle it"
+1. Squid: "Cool, next request!"
 ```
 ⏱️ **Total time:** 0.1ms (just a local function call)
 
@@ -589,12 +589,12 @@ $ActionQueueLowWatermark 60000
 **The rsyslog intermediary approach wins because:**
 
 1. ✅ **Correct Format:** Produces RFC 5424 format required by remote server
-2. ✅ **Reliable:** Buffers logs during network issues
-3. ✅ **Fast:** Non-blocking, doesn't slow down Squid
-4. ✅ **Flexible:** Easy to change destinations, add filters, modify formats
-5. ✅ **Enterprise-Ready:** Can add disk queues for maximum reliability
-6. ✅ **Built-in Log Management:** Automatic rotation and compression via logrotate
-7. ✅ **Standard:** Uses operating system facilities, not custom solutions
-8. ✅ **Maintainable:** Standard rsyslog configuration, lots of documentation
+1. ✅ **Reliable:** Buffers logs during network issues
+1. ✅ **Fast:** Non-blocking, doesn't slow down Squid
+1. ✅ **Flexible:** Easy to change destinations, add filters, modify formats
+1. ✅ **Enterprise-Ready:** Can add disk queues for maximum reliability
+1. ✅ **Built-in Log Management:** Automatic rotation and compression via logrotate
+1. ✅ **Standard:** Uses operating system facilities, not custom solutions
+1. ✅ **Maintainable:** Standard rsyslog configuration, lots of documentation
 
 **This is why rsyslog is the recommended approach for production environments!**

@@ -6,15 +6,15 @@
 
 ## Table of Contents
 1. [Quick Diagnostic Checklist](#quick-diagnostic-checklist)
-2. [Problem: Squid Won't Start](#problem-squid-wont-start)
-3. [Problem: rsyslog Won't Start](#problem-rsyslog-wont-start)
-4. [Problem: No Logs in /var/log/messages](#problem-no-logs-in-varlogmessages)
-5. [Problem: No Logs Reaching Remote Server](#problem-no-logs-reaching-remote-server)
-6. [Problem: Logs Are Malformed on Remote Server](#problem-logs-are-malformed-on-remote-server)
-7. [Problem: Performance Issues](#problem-performance-issues)
-8. [Network Troubleshooting](#network-troubleshooting)
-9. [Log Analysis Tools](#log-analysis-tools)
-10. [Getting Help](#getting-help)
+1. [Problem: Squid Won't Start](#problem-squid-wont-start)
+1. [Problem: rsyslog Won't Start](#problem-rsyslog-wont-start)
+1. [Problem: No Logs in /var/log/messages](#problem-no-logs-in-varlogmessages)
+1. [Problem: No Logs Reaching Remote Server](#problem-no-logs-reaching-remote-server)
+1. [Problem: Logs Are Malformed on Remote Server](#problem-logs-are-malformed-on-remote-server)
+1. [Problem: Performance Issues](#problem-performance-issues)
+1. [Network Troubleshooting](#network-troubleshooting)
+1. [Log Analysis Tools](#log-analysis-tools)
+1. [Getting Help](#getting-help)
 
 ---
 
@@ -950,10 +950,10 @@ tail -f /var/log/messages | grep rsyslog
 ## Still Having Problems?
 
 1. ✅ **Re-read the setup guide:** `/root/SQUID_LOGGING_SETUP.md`
-2. ✅ **Check architecture explanation:** `/root/WHY_THIS_WORKS.md`
-3. ✅ **Generate diagnostic report:** See "Collect Diagnostic Information" above
-4. ✅ **Check Squid documentation:** https://wiki.squid-cache.org
-5. ✅ **Check rsyslog documentation:** https://www.rsyslog.com/doc/
+1. ✅ **Check architecture explanation:** `/root/WHY_THIS_WORKS.md`
+1. ✅ **Generate diagnostic report:** See "Collect Diagnostic Information" above
+1. ✅ **Check Squid documentation:** https://wiki.squid-cache.org
+1. ✅ **Check rsyslog documentation:** https://www.rsyslog.com/doc/
 
 **Need more help? Share:**
 - The diagnostic report from `/root/squid-diagnostic.txt`

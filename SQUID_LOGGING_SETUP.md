@@ -10,10 +10,10 @@
 
 ## Table of Contents
 1. [Prerequisites and Tools](#prerequisites-and-tools)
-2. [Understanding the Setup](#understanding-the-setup)
-3. [Step-by-Step Configuration](#step-by-step-configuration)
-4. [Testing Your Configuration](#testing-your-configuration)
-5. [Verifying Logs Are Being Sent](#verifying-logs-are-being-sent)
+1. [Understanding the Setup](#understanding-the-setup)
+1. [Step-by-Step Configuration](#step-by-step-configuration)
+1. [Testing Your Configuration](#testing-your-configuration)
+1. [Verifying Logs Are Being Sent](#verifying-logs-are-being-sent)
 
 ---
 
@@ -108,8 +108,8 @@ rsyslog-8.2506.0-2.el9.x86_64
 
 **How it works:**
 1. Squid sends logs to the LOCAL syslog (using the syslog module)
-2. Local rsyslog receives logs and reformats them to RFC 5424
-3. rsyslog forwards the formatted logs to your remote server via UDP
+1. Local rsyslog receives logs and reformats them to RFC 5424
+1. rsyslog forwards the formatted logs to your remote server via UDP
 
 ### Why Use Local rsyslog? (Benefits)
 
