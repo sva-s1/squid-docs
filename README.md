@@ -17,7 +17,7 @@
 ## What's This About?
 
 This documentation set explains how to configure Squid proxy server (version 5.5) to send access logs to a remote syslog server using:
-- **Transport:** UDP
+- **Transport:** UDP (TCP is also supported but not covered directly in this guide)
 - **Port:** 10001 (customizable)
 - **Format:** RFC 5424 (industry standard syslog format)
 
