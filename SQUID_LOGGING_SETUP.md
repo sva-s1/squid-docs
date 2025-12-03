@@ -95,10 +95,11 @@ rsyslog-8.2506.0-2.el9.x86_64
 ### The Solution: Use rsyslog as a Translator
 
 ```
-┌────────┐        ┌─────────┐        ┌────────────────┐
-│ Squid  │───────>│ rsyslog │───────>│ Remote Syslog  │
-│ Proxy  │ syslog │ (local) │  UDP   │  10.0.0.241    │
-└────────┘        └─────────┘ RFC5424└────────────────┘
+┌────────┐              ┌─────────┐              ┌──────────────────────┐
+│ Squid  │─────────────>│ rsyslog │─────────────>│  Remote Syslog       │
+│ Proxy  │    syslog    │ (local) │     UDP      │  (S1 Collector)      │
+└────────┘              └─────────┘   RFC5424    │  10.0.0.241          │
+                                                 └──────────────────────┘
 ```
 
 **How it works:**
