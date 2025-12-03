@@ -6,11 +6,11 @@
 
 ## Table of Contents
 1. [Configuration Files](#configuration-files)
-2. [Service Management](#service-management)
-3. [Testing Commands](#testing-commands)
-4. [Monitoring Commands](#monitoring-commands)
-5. [Common Modifications](#common-modifications)
-6. [Troubleshooting Commands](#troubleshooting-commands)
+1. [Service Management](#service-management)
+1. [Testing Commands](#testing-commands)
+1. [Monitoring Commands](#monitoring-commands)
+1. [Common Modifications](#common-modifications)
+1. [Troubleshooting Commands](#troubleshooting-commands)
 
 ---
 
