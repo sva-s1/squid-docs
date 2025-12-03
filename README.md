@@ -1,5 +1,13 @@
 # Squid Proxy: Remote Syslog Logging Documentation
 
+![Rocky Linux](https://img.shields.io/badge/Rocky%20Linux-9.7-10B981?style=flat-square&logo=rockylinux&logoColor=white)
+![Squid](https://img.shields.io/badge/Squid-5.5-0088CC?style=flat-square&logo=squid&logoColor=white)
+![rsyslog](https://img.shields.io/badge/rsyslog-8.x-FF6B6B?style=flat-square&logo=linux&logoColor=white)
+![RFC 5424](https://img.shields.io/badge/RFC%205424-Compliant-4CAF50?style=flat-square&logo=rfc&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
+![Difficulty](https://img.shields.io/badge/Difficulty-Beginner-green?style=flat-square)
+![Time](https://img.shields.io/badge/Setup%20Time-15--20%20min-orange?style=flat-square&logo=clockify&logoColor=white)
+
 **Complete guide for shipping Squid proxy logs to remote syslog server in RFC 5424 format**
 
 ---
