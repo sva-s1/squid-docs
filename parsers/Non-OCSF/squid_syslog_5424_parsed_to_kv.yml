@@ -1,0 +1,46 @@
+{
+  "attributes": {
+    "dataset": "accesslog",
+    "dataSource.category": "security",
+    "dataSource.name": "squidproxy",
+    "dataSource.vendor": "squidproxy",
+    "metadata.version": "1.0.0",
+    "metadata.product.vendor_name": "squidproxy",
+    "metadata.product.name": "squidproxy",
+    "severity_id": 99
+  },
+  
+  "patterns": {
+    "structured": "-|\\[[^\\]]*\\]"
+  },
+  
+  "formats": [
+    {
+      "id": "rfc5424_squid",
+      "attributes": {
+        "rfc5424": true
+      },
+      "format": "<$pri{parse=syslogPriority}$>$version=number$ $timestamp$ $hostname$ $appname$ $procid$ $msgid$ $structured=structured$ $squid_time=number$ $squid_duration=number$ $client$ $result$ $bytes=number$ $method$ $uri{parse=uri}$ $user$ $hierarchy$ $content_type$",
+      "rewrites": [
+        {
+          "input": "result",
+          "output": "http_status",
+          "match": ".*/(\\d+)",
+          "replace": "$1"
+        }, {
+          "input": "result",
+          "output": "squid_action",
+          "match": "([^/]+)/\\d+",
+          "replace": "$1"
+        }
+      ],
+      "halt": true
+    },
+    
+    {
+      "id": "rfc3164_fallback",
+      "format": "$timestamp$ $hostname$ $appname$\\[$procid$\\]: $msg$",
+      "halt": true
+    }
+  ]
+}
